@@ -1,0 +1,42 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Maven build output
+target/
+
+# Eclipse (just in case)
+.classpath
+.project
+.settings/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# H2 database files
+*.h2.db
+*.mv.db
+*.trace.db
+
+# Spring Boot properties
+application-*.yml
+application-*.properties
+
+# Environment variables
+.env
+
+# Backup files
+*~
