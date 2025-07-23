@@ -4,6 +4,7 @@ import com.example.votingsystem.entity.Voting;
 import com.example.votingsystem.payloads.CreateVotingRequest;
 import com.example.votingsystem.service.VotingService;
 import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,5 +26,11 @@ public class VotingController {
     @PostMapping
     public Voting createVoting(@RequestBody @Valid CreateVotingRequest req) {
         return votingService.createVoting(req);
+    }
+
+    @PatchMapping("/{id}/close")
+    public ResponseEntity<Voting> closeVoting(@PathVariable Long id) {
+        Voting closed = votingService.closeVoting(id);
+        return ResponseEntity.ok(closed);
     }
 }

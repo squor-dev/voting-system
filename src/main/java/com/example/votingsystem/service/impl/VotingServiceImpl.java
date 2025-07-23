@@ -50,4 +50,12 @@ public class VotingServiceImpl implements VotingService {
         voting.setCandidates(candidateEntities);
         return votingRepository.save(voting);
     }
+
+    @Override
+    public Voting closeVoting(Long votingId) {
+        Voting voting = votingRepository.findById(votingId)
+                .orElseThrow(() -> new EntityNotFoundException("Voting not found: " + votingId));
+        voting.setClosed(true);
+        return votingRepository.save(voting);
+    }
 }

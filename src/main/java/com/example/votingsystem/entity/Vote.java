@@ -1,11 +1,12 @@
 package com.example.votingsystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Vote {
 
     @Id
@@ -17,6 +18,7 @@ public class Vote {
      */
     @ManyToOne
     @JoinColumn(name = "voting_id", nullable = false)
+    @JsonIgnore
     private Voting voting;
 
     /**
@@ -24,6 +26,7 @@ public class Vote {
      */
     @ManyToOne
     @JoinColumn(name = "candidate_id", nullable = false)
+    @JsonIgnore
     private Candidate candidate;
 
     /**
@@ -31,6 +34,7 @@ public class Vote {
      */
     @ManyToOne
     @JoinColumn(name = "voter_id", nullable = false)
+    @JsonIgnore
     private AppUser voter;
 
     public Vote() { }

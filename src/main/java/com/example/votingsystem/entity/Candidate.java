@@ -1,13 +1,14 @@
 package com.example.votingsystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Candidate {
 
     @Id
@@ -18,6 +19,7 @@ public class Candidate {
 
     @ManyToOne
     @JoinColumn(name = "voting_id", nullable = false)
+    @JsonIgnore
     private Voting voting;
 
     @OneToMany(mappedBy = "candidate", cascade = CascadeType.ALL, orphanRemoval = true)

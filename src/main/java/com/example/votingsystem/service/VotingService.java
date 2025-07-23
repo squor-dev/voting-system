@@ -9,4 +9,5 @@ import java.util.List;
 public interface VotingService {
     List<Voting> getAllVotings();
     Voting createVoting(CreateVotingRequest request);
+    Voting closeVoting(Long votingId);
 }
