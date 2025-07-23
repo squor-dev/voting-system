@@ -2,6 +2,7 @@ package com.example.votingsystem.controller;
 
 import com.example.votingsystem.entity.AppUser;
 import com.example.votingsystem.service.AppUserService;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
