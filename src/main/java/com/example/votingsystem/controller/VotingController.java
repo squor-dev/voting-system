@@ -29,8 +29,8 @@ public class VotingController {
     }
 
     @PatchMapping("/{id}/close")
-    public ResponseEntity<Voting> closeVoting(@PathVariable Long id) {
-        Voting closed = votingService.closeVoting(id);
+    public ResponseEntity<Voting> closeVoting(@PathVariable Long id, @RequestHeader("X-User-Id") Long userId) {
+        Voting closed = votingService.closeVoting(id, userId);
         return ResponseEntity.ok(closed);
     }
 }

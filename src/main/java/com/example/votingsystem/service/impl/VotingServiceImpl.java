@@ -52,9 +52,14 @@ public class VotingServiceImpl implements VotingService {
     }
 
     @Override
-    public Voting closeVoting(Long votingId) {
+    public Voting closeVoting(Long votingId, Long userId) {
         Voting voting = votingRepository.findById(votingId)
                 .orElseThrow(() -> new EntityNotFoundException("Voting not found: " + votingId));
+
+        if (!voting.getOwner().getId().equals(userId)) {
+            throw new SecurityException("You are not the owner of this voting.");
+        }
+
         voting.setClosed(true);
         return votingRepository.save(voting);
     }
